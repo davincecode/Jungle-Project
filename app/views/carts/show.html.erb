@@ -3,7 +3,11 @@
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
-
+  <% if cart.length == 0 %>
+  <h3 class="alert alert-info" role="alert">Your cart is currently empty!</h3>
+  <h4>You will find a lot of interesting products on our "Products" page.</h4><br />
+  <button type="button" class="btn btn-secondary btn-lg  "><%= link_to 'Return to Products', [:root] %></button>
+  <% else %>
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -48,5 +52,5 @@
       <% end %>
     </div>
   </div>
-
+  <% end %>
 </section>

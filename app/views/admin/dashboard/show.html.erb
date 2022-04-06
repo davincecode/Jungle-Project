@@ -1,2 +1,13 @@
-<h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
+<h1>Admin Dashboard</h1>
+
+<h3>Number of Categories: <%= @category_count %></h3>
+
+<h3><% @categories.each do |category| %>
+  <ol class="glyphicon glyphicon-check"><%= link_to category.name, category %></ol>
+  <% end %>
+</h3>
+
+<h3>Number of Products:  <%= @product_count %> </h3>
+<%= button_to admin_products_path,class: "btn btn-primary", method: :get do%>
+  Go to Products Page  <i class="fa fa-chevron-right">  </i>
+<% end %>

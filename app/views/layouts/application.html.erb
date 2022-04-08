@@ -11,11 +11,6 @@
   <%= render 'layouts/top_nav' %>
 
   <main class="container">
-    <%= yield %>
-  </main>
-
-  <%= yield :end_of_body %>
-
     <% if current_user %>
       Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
     <% else %>
@@ -23,6 +18,11 @@
     <% end %>
 
     <%= yield %>
+  </main>
+
+  <%= yield :end_of_body %>
+
+    
 
 </body>
 </html>

@@ -57,4 +57,5 @@ end
 group :production do
   gem 'newrelic_rpm'
   gem 'rails_12factor'
+  gem 'rspec-rails', '~> 3.5'
 end

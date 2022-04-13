@@ -62,13 +62,13 @@ RSpec.describe User, type: :model do
 
 #Authentication test
 
-  describe '.authenticated_credentials' do
+  describe '.authenticate_with_credentials' do
       
       it 'validates login credentials' do
         user = User.new(first_name: 'Ruby', last_name: 'Rails', email: 'sample@example.com', password: '123456', password_confirmation: '123456')
         user.save
 
-        authenticated_user = User.authenticated_credentials('sample@example.com', '123456')
+        authenticated_user = User.authenticate_with_credentials('sample@example.com', '123456')
 
         expect(authenticated_user).to eq(user)
       end
@@ -77,7 +77,7 @@ RSpec.describe User, type: :model do
         user = User.new(first_name: 'Ruby', last_name: 'Rails', email: 'sample@example.com', password: '123456', password_confirmation: '123456')
         user.save
 
-        authenticated_user = User.authenticated_credentials('sample@example.com', '1234567')
+        authenticated_user = User.authenticate_with_credentials('sample@example.com', '1234567')
 
         expect(authenticated_user).to eq(nil)
       end
@@ -85,7 +85,7 @@ RSpec.describe User, type: :model do
       it 'returns nil if password is incorrect' do
         user = User.new(first_name: 'Ruby', last_name: 'Rails', email: 'sample@example.com', password: '123456', password_confirmation: '123456')
 
-        authenticated_user = User.authenticated_credentials('sample@example.com', '1234567')
+        authenticated_user = User.authenticate_with_credentials('sample@example.com', '1234567')
 
         expect(authenticated_user).to eq(nil)
       end
@@ -93,7 +93,7 @@ RSpec.describe User, type: :model do
       it 'returns nil if email is incorrect' do
         user = User.new(first_name: 'Ruby', last_name: 'Rails', email: 'sample@example.com', password: '123456', password_confirmation: '123456')
 
-        authenticated_user = User.authenticated_credentials('sampler@example.com', '123456')
+        authenticated_user = User.authenticate_with_credentials('sampler@example.com', '123456')
 
         expect(authenticated_user).to eq(nil)
       end
